@@ -42,6 +42,33 @@
     
     
     <entry>
+      <title>ctfshow-web入门-信息收集</title>
+      <link href="/2023/01/27/1-xin-xi-shou-ji-4946418f1ae7483b853beaf9f19402e6/"/>
+      <url>/2023/01/27/1-xin-xi-shou-ji-4946418f1ae7483b853beaf9f19402e6/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-信息收集"><a href="#1-信息收集" class="headerlink" title="1.信息收集"></a>1.信息收集</h1><p>靶场&#x2F;来源: ctfshow</p><h1 id="web5"><a href="#web5" class="headerlink" title="web5"></a><strong>web5</strong></h1><p><strong>题目：</strong></p><p><img src="/2023/01/27/1-xin-xi-shou-ji-4946418f1ae7483b853beaf9f19402e6/image1.png" class="lazyload placeholder" data-srcset="/2023/01/27/1-xin-xi-shou-ji-4946418f1ae7483b853beaf9f19402e6/image1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image1.png"></p><p><strong>解题过程：</strong></p><p>根据提示，这是一道phps源码泄露题，先用御剑扫描，但不知道为什么没扫到。</p><p>百度一下phps源码泄露，发现泄漏点在xxx.phps，访问&#x2F;index.phps，得到源码。</p><p><img src="/2023/01/27/1-xin-xi-shou-ji-4946418f1ae7483b853beaf9f19402e6/image2.png" class="lazyload placeholder" data-srcset="/2023/01/27/1-xin-xi-shou-ji-4946418f1ae7483b853beaf9f19402e6/image2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image2.png"></p><p>获得flag</p><p><strong>知识点：（包括web入门所有题）</strong></p><p>信息收集的一些文件泄露：</p><blockquote><p>1.robots.txt文件泄露，放在网站的根目录下，用于限制浏览器的访问（哪些可以抓取，哪些不能抓取）用于防止黑客，但是任何人可在url中直接通过&#x2F;robots.txt访问，导致网站结构被泄露。可对admin等重要文件设置密保保护，或者采取更换文件名的方法防御.</p><p>2.phps文件泄露，phps存放着php源码,可通过尝试访问&#x2F;index.phps读取,或者尝试扫描工具扫描读取.</p><p>3..git文件泄露，当开发人员使用git控制版本时，如果操作不当，可能导致git流入线上环境，导致.git文件夹下的文件被访问，代码泄露，如.git&#x2F;index文件可找到工程所有文件名和sha1文件,在git&#x2F;objects下载导致危害</p><p>4.svn泄露，svn是源代码管理系统，在管理代码的过程中，会生成一个.svn的隐藏文件，导致源码泄露（造成原因是在发布代码时没有使用导入功能，而是直接粘贴复制）</p><p>5.vim缓存泄露，在使用vim进行编辑时，会产生缓存文件，操作正常，则会删除缓存文件，如果意外退出，缓存文件保留下来，这是时可以通过缓存文件来得到原文件，以index.php来说，第一次退出后，缓存文件名为 .index.php.swp，第二次退出后，缓存文件名为.index.php.swo,第三次退出后文件名为.index.php.swn</p><p>6.压缩文件也可能包含文件的源码等，注意rar zip后缀</p><p>7.通过网站的技术文档什么的，可以知道默认后台路径及密码，比如document.pdf</p><p>8.&#x2F;editor,在editor的flash模块，有一个文件空间，从这里可以看到服务器的目录，里面可能有flag</p><p>9.php探针如：l.php,phpinfo.php,tz.php</p><p>10.mdb文件是早期asp+access构架的数据库文件 直接查看url路径添加&#x2F;db&#x2F;db.mdb 下载文件通过txt打开或者通过EasyAccess.exe。</p></blockquote><p>文件：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">robots.txt</span><br><span class="line">index.phps</span><br><span class="line">.git</span><br><span class="line">.svn</span><br><span class="line">.index.php.swp</span><br><span class="line">.index.php.swo</span><br><span class="line">.index.php.swn</span><br><span class="line">./editor</span><br><span class="line">document.pdf</span><br><span class="line">l.php</span><br><span class="line">phpinfo.php</span><br><span class="line">tz.php</span><br><span class="line">/db/db.mdb</span><br></pre></td></tr></table></figure><p>信息泄露点：</p><p>1.可以通过网站泄露的qq，手机号码，wx等获得一些信息（地点等）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络安全 </category>
+          
+          <category> ctf </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CTFwp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ctfshow-web入门-爆破</title>
       <link href="/2023/01/23/ctfshow-web-ru-men-bao-po/"/>
       <url>/2023/01/23/ctfshow-web-ru-men-bao-po/</url>
@@ -60,7 +87,7 @@
       
         <tags>
             
-            <tag> ctf </tag>
+            <tag> CTFwp </tag>
             
         </tags>
       

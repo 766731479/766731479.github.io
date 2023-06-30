@@ -561,15 +561,15 @@
 
 <p>成功写入shell，使用蚁剑进行连接</p>
 <p>可以看到题目提示<code>flag in db</code>，flag在数据库当中，而蚁剑连接到的账号只是<code>www-data</code>权限，不能连接mysql</p>
-<p><img src="/2023/06/30/18-qi-ta-a9fd82f748734e179cdb6705fa542fa4/Untitled-.png" class="lazyload placeholder" data-srcset="/2023/06/30/18-qi-ta-a9fd82f748734e179cdb6705fa542fa4/Untitled-.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p><img src="/18%20%E5%85%B6%E4%BB%96%20a9fd82f748734e179cdb6705fa542fa4/Untitled.png" class="lazyload placeholder" data-srcset="/18%20%E5%85%B6%E4%BB%96%20a9fd82f748734e179cdb6705fa542fa4/Untitled.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
 <p>所以这里有三种思路</p>
 <p>1.对Linux用户进行提权</p>
 <p>2.使用php的mysql语句查询</p>
 <p>3.写一个有sql注入的功能点代码，然后使用sqlmap跑</p>
 <p>直接在idnex.php进行修改</p>
-<p><img src="/Untitled-%201.png" class="lazyload placeholder" data-srcset="/Untitled-%201.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p><img src="/2023/06/30/18-qi-ta-a9fd82f748734e179cdb6705fa542fa4/Untitled-1.png" class="lazyload placeholder" data-srcset="/2023/06/30/18-qi-ta-a9fd82f748734e179cdb6705fa542fa4/Untitled-1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
 <p>得到flag</p>
-<p><img src="/Untitled-%202.png" class="lazyload placeholder" data-srcset="/Untitled-%202.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
+<p><img src="/2023/06/30/18-qi-ta-a9fd82f748734e179cdb6705fa542fa4/Untitled-2.png" class="lazyload placeholder" data-srcset="/2023/06/30/18-qi-ta-a9fd82f748734e179cdb6705fa542fa4/Untitled-2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="Untitled"></p>
 <h1 id="web407"><a href="#web407" class="headerlink" title="web407"></a>web407</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ip</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;ip&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(<span class="title function_ invoke__">filter_var </span>(<span class="variable">$ip</span>,FILTER_VALIDATE_IP))&#123;</span><br><span class="line">    <span class="title function_ invoke__">call_user_func</span>(<span class="variable">$ip</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">cafe</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span><span class="title function_ invoke__"> static function add</span>()&#123;</span><br><span class="line">        <span class="keyword">echo</span><span class="title function_ invoke__"> file_get_contents</span>(<span class="string">&#x27;flag.php&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>call_user_func()函数接受多个参数，并将第一个参数作为方法或函数名，后面作为参数进行调用</p>

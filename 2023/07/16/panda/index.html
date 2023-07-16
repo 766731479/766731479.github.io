@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>《Web漏洞搜索》阅读笔记 | PIP的空间</title>
+  <title>Pandas笔记 | PIP的空间</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -464,21 +464,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        《Web漏洞搜索》阅读笔记
+        Pandas笔记
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2022-12-23 |
+          <i class="fas fa-calendar"></i> Published in：2023-07-16 |
         </span>
       
 
@@ -486,8 +486,8 @@
         <span class="post-detail-header_categories">
           <i class="iconfont iconbookmark1"></i> category：
           
-            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="post-detail-header_category">
-              网络安全
+            <a href="/categories/Ai/" class="post-detail-header_category">
+              Ai
             </a>
           
         </span>
@@ -511,86 +511,150 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="《Web漏洞搜索》"><a href="#《Web漏洞搜索》" class="headerlink" title="《Web漏洞搜索》"></a>《Web漏洞搜索》</h1><p>备注: 讲了一下跟挖漏洞相关的建议，还有一些实例<br>开始日期: December 23, 2022 5:09 PM<br>状态: 已完成</p>
-<h1 id="开放式重定向"><a href="#开放式重定向" class="headerlink" title="开放式重定向"></a>开放式重定向</h1><aside>
-💡 重定向的实现一般是通过url参数，HTML<meta>刷新标签，DOM中的window对象的location属性实现的。
+        <p>pandas介绍： Pandas 是一个强大的数据处理和分析库，提供了丰富的数据结构和数据操作函数，使得数据的清洗、转换、分析和可视化变得更加简单和高效。<br>学习文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Strive_For_Future/article/details/126710810">https://blog.csdn.net/Strive_For_Future&#x2F;article&#x2F;details&#x2F;126710810</a></p>
+<h1 id="生成数据表"><a href="#生成数据表" class="headerlink" title="生成数据表"></a>生成数据表</h1><p><strong>导入数据</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pd.read_excel(<span class="string">&#x27;name.xlsv&#x27;</span>) #导入csv文件</span><br><span class="line">pd.read_csv(<span class="string">&quot;name.csv&quot;</span> , sep= <span class="string">&quot;;&quot;</span> , encoding= <span class="string">&quot;utf-8&quot;</span> , nrows=<span class="number">1000</span>, skiprows=[<span class="number">2</span>,<span class="number">5</span>]) # 导入xlsx文件</span><br><span class="line"></span><br><span class="line"># sep 分隔符</span><br><span class="line"># encoding 编码模式</span><br><span class="line"># nrows=<span class="number">1000</span> 读取前<span class="number">1000</span>行数据</span><br><span class="line"># skiprows 读取文件时移除第二行和第五行</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>还有 <code>read_clipboard</code>, <code>read_sql  </code></p>
+<p><strong>生成数据表</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame(pd.read_excel(<span class="string">&#x27;name.xlsv&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>id</strong></th>
+<th><strong>名字</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>小明</td>
+</tr>
+<tr>
+<td>2</td>
+<td>小红</td>
+</tr>
+<tr>
+<td>3</td>
+<td>小江</td>
+</tr>
+</tbody></table>
+<h1 id="查看数据表信息"><a href="#查看数据表信息" class="headerlink" title="查看数据表信息"></a>查看数据表信息</h1><h2 id="查看维度"><a href="#查看维度" class="headerlink" title="查看维度"></a>查看维度</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.shape</span><br></pre></td></tr></table></figure>
 
-</aside>
+<blockquote>
+<p>(3, 2)</p>
+</blockquote>
+<h2 id="数据表基本信息-维度，列名，数据格式，所占空间等"><a href="#数据表基本信息-维度，列名，数据格式，所占空间等" class="headerlink" title="数据表基本信息(维度，列名，数据格式，所占空间等)"></a>数据表基本信息(维度，列名，数据格式，所占空间等)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.info()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>df.info()</p>
+</blockquote>
+<h2 id="查看行索引名（第一列）"><a href="#查看行索引名（第一列）" class="headerlink" title="查看行索引名（第一列）"></a>查看行索引名（第一列）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.index # 返回series对象</span><br><span class="line">df.index.values # 返回列表</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[0 1 2]</p>
+</blockquote>
+<h2 id="查看列索引名（第一行）"><a href="#查看列索引名（第一行）" class="headerlink" title="查看列索引名（第一行）"></a>查看列索引名（第一行）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.columns # 返回series对象</span><br><span class="line">df.columns # 返回列表</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[‘id’ ‘名字’]</p>
+</blockquote>
+<h2 id="定位表格中的指定元素"><a href="#定位表格中的指定元素" class="headerlink" title="定位表格中的指定元素"></a>定位表格中的指定元素</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print(df.at[<span class="string">&#x27;行标签名&#x27;</span>, <span class="string">&#x27;列标签名&#x27;</span>])</span><br><span class="line">print(df.iat[<span class="string">&#x27;行索引号&#x27;</span>, <span class="string">&#x27;列索引号&#x27;</span>])</span><br><span class="line"> </span><br><span class="line">print(df.loc[<span class="string">&#x27;行标签名&#x27;</span>, <span class="string">&#x27;列标签名&#x27;</span>])</span><br><span class="line">print(df.iloc[行索引数字, 列索引数字])</span><br><span class="line"> </span><br><span class="line">print(df.loc[<span class="string">&#x27;行标签名1&#x27;</span>:<span class="string">&#x27;行标签名2&#x27;</span>, <span class="string">&#x27;列标签名1&#x27;</span>: <span class="string">&#x27;列标签名2&#x27;</span>])</span><br><span class="line">print(df.iloc[行索引数字<span class="number">1</span>:行索引数字<span class="number">2</span>, 列索引数字<span class="number">1</span>:列索引数字<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;&#x27;A&#x27;: [1, 2, 3],</span><br><span class="line">        &#x27;B&#x27;: [4, 5, 5],</span><br><span class="line">        &#x27;C&#x27;: [6, 7, 8]&#125;</span><br><span class="line">df = pd.DataFrame(data)</span><br><span class="line"></span><br><span class="line"># 使用at[]访问DataFrame中的单个元素</span><br><span class="line">value = df.iloc[1, 0:2]</span><br><span class="line">print(df)</span><br><span class="line">print(value)</span><br></pre></td></tr></table></figure>
 
-<p>简述：通过改变GET请求中包含可以控制的重定向网址，将网站重定向到我们想要的地方。</p>
-<p>挖掘思路：</p>
-<p>重点关注特定名称的url参数，如：url&#x3D;,redirect&#x3D;,next&#x3D;,r&#x3D;,u&#x3D;</p>
-<p>有时候网站会对重定向的链接做一些验证，可能是只能重定向到本网站，此时就需要结合其他漏洞进行利用，比如重定向到一个可以自由编辑js代码的界面，这时候再进行一个重定向，就可以达到我们预期的结果。</p>
-<p>有时候我们可以控制重定向网址的一部分，比如结尾，我们可以在结尾构造重定向链接，因为DNS是按照域名标记右侧优先的原则进行查询</p>
-<h1 id="HPP（http参数污染）"><a href="#HPP（http参数污染）" class="headerlink" title="HPP（http参数污染）"></a>HPP（http参数污染）</h1><p>简述：我们的请求过程中，对http注入额外的参数，这些额外参数干扰了后端代码对正常参数的处理，从而导致了非预期的结果。</p>
-<aside>
-💡 服务器端HPPP与客户端HPP的区别：对http进行参数污染之后是否在有中间的反馈。服务器端HPP只能看到后端代码运行之后的结果，而看不到中间的过程。（不用太纠结区别）
+<h2 id="数据的类型"><a href="#数据的类型" class="headerlink" title="数据的类型"></a>数据的类型</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.dtypes</span><br><span class="line">df[&#x27;B&#x27;].dtypes</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>A    int64<br>B    int64<br>C    int64<br>dtype: object</p>
+<p>int64</p>
+</blockquote>
+<h2 id="查看某一列的值"><a href="#查看某一列的值" class="headerlink" title="查看某一列的值"></a>查看某一列的值</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[&quot;名字&quot;].values</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[‘小明’ ‘小红’ ‘小江’]</p>
+</blockquote>
+<h2 id="查看某一行的值"><a href="#查看某一行的值" class="headerlink" title="查看某一行的值"></a>查看某一行的值</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.iloc[3].values</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[3 ‘小江’]</p>
+</blockquote>
+<h2 id="查看是否空值"><a href="#查看是否空值" class="headerlink" title="查看是否空值"></a>查看是否空值</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isnull()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<pre><code>  id     名字
+</code></pre>
+<p>0  False  False<br>1  False  False<br>2  False  False</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[&#x27;B&#x27;].isnull()</span><br></pre></td></tr></table></figure>
 
-</aside>
+<h2 id="查看某一列的唯一值"><a href="#查看某一列的唯一值" class="headerlink" title="查看某一列的唯一值"></a>查看某一列的唯一值</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[&#x27;id&#x27;].unique()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[1 2 3]</p>
+</blockquote>
+<h2 id="查看数据表的值"><a href="#查看数据表的值" class="headerlink" title="查看数据表的值"></a>查看数据表的值</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.values</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[1 ‘小明’]<br> [2 ‘小红’]<br> [3 ‘小江’]]</p>
+</blockquote>
+<h2 id="查看前n行-后n行的值"><a href="#查看前n行-后n行的值" class="headerlink" title="查看前n行&#x2F;后n行的值"></a>查看前n行&#x2F;后n行的值</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.head(2)</span><br><span class="line">df.tail(2)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>   id  名字<br>0   1  小明<br>1   2  小红<br>   id  名字<br>1   2  小红<br>2   3  小江</p>
+</blockquote>
+<h2 id="满足特定文件的行"><a href="#满足特定文件的行" class="headerlink" title="满足特定文件的行"></a>满足特定文件的行</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[df.id&gt;1]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>挖掘思路：</p>
-<ul>
-<li>寻找与其他服务相关联的链接，因为这些链接在跳转的时候可能会传递一些可控的参数，我们通过&amp;xxx&#x3D;xxx添加新的参数（有时候需要对&amp;进行url编码为%26，改值被html编码后为&amp;amp；）。</li>
-<li>在挖掘逻辑漏洞时可以试一下参数污染，添加相同参数绕过</li>
-</ul>
-<h1 id="CSRF（跨站请求伪造）"><a href="#CSRF（跨站请求伪造）" class="headerlink" title="CSRF（跨站请求伪造）"></a>CSRF（跨站请求伪造）</h1><p>简述：用户在一个网站上登录自己的账号，我们通过其他网站A去重定向到这个网站B，并以用户的身份发送请求。</p>
-<p>挖掘思路：</p>
-<ul>
-<li>GET请求→直接在url注入要发送的参数</li>
-<li>POST请求→后台可能用的request接受参数，同样在url注入参数。如果是后台是POST请求接受参数，那我们可以网站A去构造一个表单，如：</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">　　<span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　　　<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">　　　　　　<span class="keyword">function</span> <span class="title function_">steal</span>(<span class="params"></span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">　　　　　　&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          　　　　 iframe = <span class="variable language_">document</span>.<span class="property">frames</span>[<span class="string">&quot;steal&quot;</span>];</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">　　     　　      iframe.<span class="property">document</span>.<span class="title class_">Submit</span>(<span class="string">&quot;transfer&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">　　　　　　&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">　　　　</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">　　<span class="language-xml"><span class="tag">&lt;<span class="name">body</span> <span class="attr">οnlοad</span>=<span class="string">&quot;steal()&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　　　<span class="tag">&lt;<span class="name">iframe</span> <span class="attr">name</span>=<span class="string">&quot;steal&quot;</span> <span class="attr">display</span>=<span class="string">&quot;none&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　　　　　<span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span> <span class="attr">name</span>=<span class="string">&quot;transfer&quot;</span>　<span class="attr">action</span>=<span class="string">&quot;http://www.myBank.com/Transfer.php&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　　　　　　　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;toBankId&quot;</span> <span class="attr">value</span>=<span class="string">&quot;11&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　　　　　　　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;money&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1000&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　　　　　<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　　　<span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="导出文件"><a href="#导出文件" class="headerlink" title="导出文件"></a>导出文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_excel(<span class="string">&quot;name.xlsx&quot;</span>)</span><br><span class="line">df = pd.DataFrame(data)</span><br><span class="line">d = data.loc[data[<span class="string">&#x27;id&#x27;</span>]==<span class="number">2</span>,[<span class="string">&#x27;名字&#x27;</span>]]</span><br><span class="line">d.to_excel(<span class="string">&#x27;1.xlsx&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>向网站B发送请求，这里的type&#x3D;”hidden”可以隐藏标签，display&#x3D;”none”可以隐藏响应内容</p>
-<ul>
-<li>应该重点关注在服务器端执行操作的HTTP请求.有时候一些API接口也会存在CSRF。</li>
-<li>如果网站正在使用POST请求发送CSRF令牌，我们可以尝试修改或将其删除，以验证令牌是否存在</li>
-</ul>
-<p>常见防御手段：</p>
-<ul>
-<li>网站要求以内容类型（content-type）为application&#x2F;json，带着一个CSRF token进行提交，用来验证请求的发起者。当浏览器发送application&#x2F;json请求时，会发送一个OPTIONS HTTP请求，这个请求会返回支持的HTTP请求类型和信任的源。有些情况下，我们可以通过修改content-type绕过这些措施。</li>
-<li>扩源资源共享（CORS）定义了网站什么时候和如何互相读取响应信息。有些情况下，我们可以将content-type修改为application&#x2F;x-www-form-urlencoded，multipart&#x2F;form-data或text。plain来绕过，这样就不会发起OPTIONS HTTP请求。</li>
-<li>将token写在某一个http中（GET，POST都有可能）。</li>
-</ul>
-<h1 id="CRLF注入（回车换行注入）"><a href="#CRLF注入（回车换行注入）" class="headerlink" title="CRLF注入（回车换行注入）"></a>CRLF注入（回车换行注入）</h1><p>简述：服务器和浏览器都是通过CRLF字符来识别HTTP消息中的不同部分的,我们可以在http头中加入回车换行符 \n\r，其编码形式为%0d%0a，从而修改http头的消息。进一步可以造成HTTP夹带攻击，HTTP响应攻击和XSS攻击，会话固定，缓存投毒等。</p>
-<p>漏洞挖掘：</p>
-<ul>
-<li>注入点主要是重定向或者跳转的地方。要观察输出是否再返回头中，查看输入，可能是在URL值和参数，cookie中。</li>
-<li>常见的两种情况是使用输入参数set-cookie和302跳转location处。CRLF之后，我们可以加入新的参数，或进行XSS注入。比如某一个链接：xxx.com?url&#x3D;<a target="_blank" rel="noopener" href="http://www.baidu.com,然后这个www.baidu.com又出现在页面当中,此时我们可以将这个重定向漏洞进行进一步的升级,改为xxx.com/?url=%0D%0A">www.baidu.com，然后这个www.baidu.com又出现在页面当中，此时我们可以将这个重定向漏洞进行进一步的升级，改为xxx.com?url=%0d%0a</a><xss payload>，从而注入xss。</li>
-</ul>
-<p>常见防御手段：</p>
-<ul>
-<li>过滤CRLF字符</li>
-</ul>
-<h1 id="缓存投毒"><a href="#缓存投毒" class="headerlink" title="缓存投毒"></a>缓存投毒</h1><p>简述：服务器为了节省资源，当多个用户请求同一资源时，服务端会返回预先存好的资源。我们可以通过修改这个缓存造成缓存投毒</p>
-<h1 id="XXS"><a href="#XXS" class="headerlink" title="XXS"></a>XXS</h1><p>漏洞挖掘：</p>
-<ul>
-<li>有时候注入一个xss并不会马上发生反馈，比如在用户名注入xss payload，但在个人主页上并没有反馈，但在邮箱功能却能够实现。所以要关注多个地方，看xss是否在某个不显著的地方实现了。</li>
-<li>有时候xss会被js代码过滤，编码，我们可以通过重写此js代码绕过</li>
-<li>有些网站使用修改xss（移除字符，属性等）进行输入过滤，我们可以通过分析它的机制，利用这个修改机制绕过</li>
-<li>网站可能只对输入进行过滤，而页面呈现没有过滤。（利用条件较苛刻）</li>
-<li>多关注能反馈到页面的输入</li>
-</ul>
-<h1 id="SSTI模板注入"><a href="#SSTI模板注入" class="headerlink" title="SSTI模板注入"></a>SSTI模板注入</h1><p>漏洞挖掘：常用49，&lt;%&#x3D;xxx%&gt;进行测试</p>
-<ul>
-<li>在寻找漏洞前，最好对网站进行信息收集，确认一下使用的相关技术（比如网站的框架，前端呈现的引擎，CMS等）</li>
-</ul>
-<h1 id="XXE-外部实体注入"><a href="#XXE-外部实体注入" class="headerlink" title="XXE(外部实体注入)"></a>XXE(外部实体注入)</h1><p>简述：</p>
-<p>XML 和 HTML 为不同的目的而设计：</p>
-<ul>
-<li>XML 被设计用来传输和存储数据，其焦点是数据的内容。</li>
-<li>HTML 被设计用来显示数据，其焦点是数据的外观</li>
-</ul>
-<p>基本组成：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;ISO-8859-1&quot;</span><span class="meta">?&gt;</span> <span class="comment">#声明头</span></span><br><span class="line">&lt;note&gt; <span class="comment">#内容，标签名是可以自定义的</span></span><br><span class="line">&lt;to&gt;Tove&lt;/to&gt;</span><br><span class="line">&lt;<span class="keyword">from</span>&gt;Jani&lt;/<span class="keyword">from</span>&gt;</span><br><span class="line">&lt;heading&gt;Reminder&lt;/heading&gt;</span><br><span class="line">&lt;body fun=<span class="string">&quot;1&quot;</span>&gt;Don<span class="string">&#x27;t forget me this weekend!&lt;/body&gt; #带了一个fun属性</span></span><br><span class="line"><span class="string">&lt;website&gt;&amp;url;&lt;/website&gt;</span></span><br><span class="line"><span class="string">&lt;/note&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="数据表清洗"><a href="#数据表清洗" class="headerlink" title="数据表清洗"></a>数据表清洗</h1><h2 id="去除空值"><a href="#去除空值" class="headerlink" title="去除空值"></a>去除空值</h2><h3 id="清除空值"><a href="#清除空值" class="headerlink" title="清除空值"></a>清除空值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;名字&#x27;</span>]=df[<span class="string">&#x27;名字&#x27;</span>].<span class="built_in">map</span>(<span class="built_in">str</span>.strip)</span><br></pre></td></tr></table></figure>
 
-<p>XML实体：相当于定义一个变量，避免多次调用时重复编写。实体名为以&amp;开头，以;结尾。如果实体需要被计算，那么将&amp;替换为%，即为%xxx;</p>
-<p>DTD :定义文档结构，支持外部DTD和内部DTD：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>xml version=<span class="string">&quot;1.0&quot;</span><span class="meta">?&gt;</span></span><br><span class="line">&lt;!DOCTYPE note [ </span><br><span class="line">&lt;!ELEMENT <span class="title function_ invoke__">note</span> (to,<span class="keyword">from</span>,heading,body)&gt;</span><br><span class="line">&lt;!ELEMENT <span class="title function_ invoke__">to</span> (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT <span class="keyword">from</span> (<span class="comment">#PCDATA)&gt;</span></span><br><span class="line">&lt;!ELEMENT <span class="title function_ invoke__">heading</span> (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT <span class="title function_ invoke__">body</span> (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT url SYSTEM <span class="string">&quot;website.txt&quot;</span>&gt;</span><br><span class="line">]&gt;</span><br><span class="line">...此处为上一个代码块的代码</span><br><span class="line"><span class="comment">###</span></span><br><span class="line">&lt;!DOCTYPE note []&gt;定义此文档是 note 类型的文档。</span><br><span class="line">&lt;!ELEMENT note&gt;定义 note 元素有四个元素：<span class="string">&quot;to、from、heading,、body&quot;</span></span><br><span class="line">&lt;!ELEMENT to&gt; 定义 to 元素为 <span class="string">&quot;#PCDATA&quot;</span> 类型（下面的同理）</span><br><span class="line">ps：</span><br><span class="line"><span class="comment">#PCDATA 表示可进行HTML解析的字符数据，不过，被解析的字符数据不应当包含任何 &amp;、&lt; 或者 &gt; 字符；需要使用 &amp;amp;、&amp;lt; 以及 &amp;gt; 实体来分别替换它们。</span></span><br><span class="line"><span class="comment">#CDdata 表示不会被解析器解析的文本</span></span><br><span class="line">ANY 定义标签包含任何可解析的数据</span><br><span class="line"></span><br><span class="line">&lt;!ELEMENT url SYSTEM <span class="string">&quot;website.txt&quot;</span>&gt; 使用SYSTEM属性告诉解析器使用url占位符获取website.txt文件的内容</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="将空值使用0代替"><a href="#将空值使用0代替" class="headerlink" title="将空值使用0代替"></a>将空值使用0代替</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.fillna(value=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="将控制使用均值代替"><a href="#将控制使用均值代替" class="headerlink" title="将控制使用均值代替"></a>将控制使用均值代替</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;名字&#x27;</span>].fillna(df[<span class="string">&#x27;名字&#x27;</span>].mean())</span><br></pre></td></tr></table></figure>
 
-<p>漏洞挖掘：</p>
+<h2 id="大小写转换"><a href="#大小写转换" class="headerlink" title="大小写转换"></a>大小写转换</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;column_name&#x27;</span>] = df[<span class="string">&#x27;column_name&#x27;</span>].<span class="built_in">str</span>.upper()  <span class="comment"># 转换为大写</span></span><br><span class="line">df[<span class="string">&#x27;column_name&#x27;</span>] = df[<span class="string">&#x27;column_name&#x27;</span>].<span class="built_in">str</span>.lower()  <span class="comment"># 转换为小写</span></span><br></pre></td></tr></table></figure>
+<h2 id="更改数据格式"><a href="#更改数据格式" class="headerlink" title="更改数据格式"></a>更改数据格式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df(<span class="string">&#x27;id&#x27;</span>).astype(<span class="built_in">int</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="更改列名"><a href="#更改列名" class="headerlink" title="更改列名"></a>更改列名</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.rename(columns=&#123;<span class="string">&#x27;改之前的列名&#x27;</span>: <span class="string">&#x27;改之后的列名&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除重复的值"><a href="#删除重复的值" class="headerlink" title="删除重复的值"></a>删除重复的值</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;id&#x27;</span>].drop_duplicates() <span class="comment"># 删除重复值的第一个</span></span><br><span class="line">df[<span class="string">&#x27;id&#x27;</span>].drop_duplicates(keep=<span class="string">&#x27;last&#x27;</span>) <span class="comment"># 删除重复值的最后一个</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="替换数据"><a href="#替换数据" class="headerlink" title="替换数据"></a>替换数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;名字&#x27;</span>].replace(<span class="string">&#x27;小明&#x27;</span>，<span class="string">&#x27;小黑&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h1><h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><p>Pandas 提供了多种函数用于合并数据，常用的函数有以下几种：</p>
+<ol>
+<li>pd.concat(): 将多个数据框按照指定的轴方向进行连接操作。可以进行垂直连接（纵向）或水平连接（横向）。</li>
+<li>df.append(): 将一个数据框追加到另一个数据框的末尾，实现垂直连接操作。（新版本弃用）</li>
+<li>df.join(): 将多个数据框基于索引进行水平连接。</li>
+<li>pd.merge(): 基于指定的列或索引进行数据框的合并操作，类似于关系型数据库中的 JOIN 操作。支持多种连接方式，如内连接、左连接、右连接和外连接等。</li>
+</ol>
+<h3 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h3><p>使用merge(表1，表2，how&#x3D;属性)进行合并操作，不同属性值对应不同的合并方式</p>
+<h4 id="inner-交集"><a href="#inner-交集" class="headerlink" title="inner 交集"></a>inner 交集</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_inner = pd.merge(df, df1, how=<span class="string">&#x27;inner&#x27;</span>) <span class="comment"># 匹配交集</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="left-right-左连接-右连接"><a href="#left-right-左连接-右连接" class="headerlink" title="left&#x2F;right 左连接&#x2F;右连接"></a>left&#x2F;right 左连接&#x2F;右连接</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_left = pd.merge(df,df1,how=<span class="string">&#x27;left&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">    <span class="string">&#x27;名字&#x27;</span>: [<span class="string">&#x27;小明&#x27;</span>, <span class="string">&#x27;小红&#x27;</span>, <span class="string">&#x27;小江&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">df1 = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">    <span class="string">&#x27;成绩&#x27;</span>: [<span class="number">80</span>, <span class="number">85</span>, <span class="number">78</span>]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">df_left = pd.merge(df,df1,how=<span class="string">&#x27;left&#x27;</span>) <span class="comment"># 左连接</span></span><br><span class="line">df_right = pd.merge(df,df1,how=<span class="string">&#x27;right&#x27;</span>) <span class="comment">#右连接</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>   id  名字  成绩<br>0   1  小明  80<br>1   2  小红  85<br>2   3  小江  78<br>   id  名字  成绩<br>0   1  小明  80<br>1   2  小红  85<br>2   3  小江  78</p>
+</blockquote>
+<h4 id="outer-交集"><a href="#outer-交集" class="headerlink" title="outer 交集"></a>outer 交集</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">    <span class="string">&#x27;名字&#x27;</span>: [<span class="string">&#x27;小明&#x27;</span>, <span class="string">&#x27;小红&#x27;</span>, <span class="string">&#x27;小江&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">df1 = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">    <span class="string">&#x27;名字&#x27;</span>: [<span class="string">&#x27;小明&#x27;</span>, <span class="string">&#x27;小黑&#x27;</span>, <span class="string">&#x27;小汪&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">df_outer = pd.merge(df, df1, how=<span class="string">&#x27;outer&#x27;</span>) <span class="comment"># 匹配交集</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>0   1  小明<br>1   2  小红<br>2   3  小江<br>3   2  小黑<br>4   3  小汪</p>
+</blockquote>
+<h3 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">result = pd.concat(objs, axis=0, join=&#x27;outer&#x27;, ignore_index=False)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    objs: 一个包含要连接的数据框的序列，可以是列表、元组或字典。</span><br><span class="line">    axis: 连接的轴方向，0 表示垂直连接（纵向），1 表示水平连接（横向）。</span><br><span class="line">    join: 连接的方式，默认为 &#x27;outer&#x27;，表示按照并集进行连接。可选的取值还包括 &#x27;inner&#x27;，表示按照交集进行连接。</span><br><span class="line">    ignore_index: 是否忽略原始索引并生成新的整数索引，默认为 False。</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">    <span class="string">&#x27;名字&#x27;</span>: [<span class="string">&#x27;小明&#x27;</span>, <span class="string">&#x27;小红&#x27;</span>, <span class="string">&#x27;小江&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">df1 = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">    <span class="string">&#x27;名字&#x27;</span>: [<span class="string">&#x27;小明&#x27;</span>, <span class="string">&#x27;小黑&#x27;</span>, <span class="string">&#x27;小汪&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">result = pd.concat([df,df1],axis=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>   id  名字<br>0   1  小明<br>1   2  小红<br>2   3  小江<br>0   1  小明<br>1   2  小黑<br>2   3  小汪</p>
+</blockquote>
+<h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = left.join(right, on=&#x27;key&#x27;) #使用key作为索引</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置索引列"><a href="#设置索引列" class="headerlink" title="设置索引列"></a>设置索引列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_inner.set_index(<span class="string">&#x27;id&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="按照特定列的值排序："><a href="#按照特定列的值排序：" class="headerlink" title="按照特定列的值排序："></a>按照特定列的值排序：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_inner.sort_values(by=[<span class="string">&#x27;age&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="按照索引列排序："><a href="#按照索引列排序：" class="headerlink" title="按照索引列排序："></a>按照索引列排序：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_inner.sort_index()</span><br></pre></td></tr></table></figure>
+<h2 id="如果prince列的值-3000，group列显示high，否则显示low："><a href="#如果prince列的值-3000，group列显示high，否则显示low：" class="headerlink" title="如果prince列的值&gt;3000，group列显示high，否则显示low："></a>如果prince列的值&gt;3000，group列显示high，否则显示low：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_inner[<span class="string">&#x27;group&#x27;</span>] = np.where(df_inner[<span class="string">&#x27;price&#x27;</span>] &gt; <span class="number">3000</span>,<span class="string">&#x27;high&#x27;</span>,<span class="string">&#x27;low&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="对复合多个条件的数据进行分组标记"><a href="#对复合多个条件的数据进行分组标记" class="headerlink" title="对复合多个条件的数据进行分组标记"></a>对复合多个条件的数据进行分组标记</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_inner.loc[(df_inner[<span class="string">&#x27;city&#x27;</span>] == <span class="string">&#x27;beijing&#x27;</span>) &amp; (df_inner[<span class="string">&#x27;price&#x27;</span>] &gt;= <span class="number">4000</span>), <span class="string">&#x27;sign&#x27;</span>]=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>解释： 有一个名为 df_inner 的 DataFrame，其中包含了城市（’city’）和价格（’price’）两列数据。我们想要对满足条件的行添加一个新的列 ‘sign’，并赋值为 1。  </p>
+<h2 id="对category字段的值依次进行分列，并创建数据表，索引值为df-inner的索引列，列名称为category和size"><a href="#对category字段的值依次进行分列，并创建数据表，索引值为df-inner的索引列，列名称为category和size" class="headerlink" title="对category字段的值依次进行分列，并创建数据表，索引值为df_inner的索引列，列名称为category和size"></a>对category字段的值依次进行分列，并创建数据表，索引值为df_inner的索引列，列名称为category和size</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.DataFrame((x.split(<span class="string">&#x27;-&#x27;</span>) <span class="keyword">for</span> x <span class="keyword">in</span> df_inner[<span class="string">&#x27;category&#x27;</span>]),index=df_inner.index,columns=[<span class="string">&#x27;category&#x27;</span>,<span class="string">&#x27;size&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>注意具有xml，可以上传xml的地方</li>
+<li>x.split(‘-‘) for x in df_inner[‘category’] 是一个生成器表达式，用于对 df_inner[‘category’] 列中的每个元素应用 split(‘-‘) 操作，将其拆分成两部分，并生成一个新的迭代器。</li>
+<li>index&#x3D;df_inner.index 指定了新 DataFrame 的索引，使用了 df_inner 的索引。</li>
+<li>columns&#x3D;[‘category’, ‘size’] 指定了新 DataFrame 的列名。</li>
+</ul>
+<h2 id="将完成分裂后的数据表和原df-inner数据表进行匹配"><a href="#将完成分裂后的数据表和原df-inner数据表进行匹配" class="headerlink" title="将完成分裂后的数据表和原df_inner数据表进行匹配"></a>将完成分裂后的数据表和原df_inner数据表进行匹配</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_inner=pd.merge(df_inner,split,right_index=<span class="literal">True</span>, left_index=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>df_inner 是待合并的第一个 DataFrame。</li>
+<li>split 是待合并的第二个 DataFrame。</li>
+<li>right_index&#x3D;True 表示使用 split DataFrame 的索引作为合并的依据。</li>
+<li>left_index&#x3D;True 表示使用 df_inner DataFrame 的索引作为合并的依据。</li>
 </ul>
 
       </div>
@@ -598,8 +662,12 @@
         
         <div class="tags">
           
-            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="">
-              读书笔记
+            <a href="/tags/Ai/" class="">
+              Ai
+            </a>
+          
+            <a href="/tags/Python/" class="">
+              Python
             </a>
           
         </div>
@@ -613,7 +681,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2022/12/23/web-lou-dong-sou-suo-676da3cd74cd454595e5beca08946d17/" target="_blank" title="《Web漏洞搜索》阅读笔记">http://example.com/2022/12/23/web-lou-dong-sou-suo-676da3cd74cd454595e5beca08946d17/</a>
+    <a href="/2023/07/16/panda/" target="_blank" title="Pandas笔记">http://example.com/2023/07/16/panda/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -635,22 +703,41 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" class="lazyload placeholder" data-srcset="https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
-    <a href="/2022/12/23/dai-ma-shen-ji-27f31c56ad1f449fb4d542f939bec05b/" class="post-nav-link">
+    <a href="/2023/07/16/numpy/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">《代码审计》阅读笔记</div>
+        <div class="title-text">numpy笔记</div>
       </div>
       
       <!-- <div class="content">
-        《代码审计》备注: php代码审计开始日期: December 23, 2022 5:09 PM状态: 已完成
-审计思路
+        numpy数组跟python原生的数组不同优势：因为底层是使用C语言直接实现，所以效率更快（但编写是python）学习文
       </div> -->
     </a>
   </div>
 
 
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" class="lazyload placeholder" data-srcset="https://pic3.zhimg.com/80/v2-e5c15010b8ba4608a1974403a02a2da0_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2023/07/15/ji-qi-xue-xi-5bc6198e1e8f436ea161b7cd0a7c56b8/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">机器学习</div>
+      </div>
+      <!-- <div class="content">
+        机器学习b站：BV1LR4y1R77n
+进度：p20
+一些概念：特征标准化：通过公式将数据化为0~1之间
+回归问题1. 
+      </div> -->
+    </a>
+  </div>
 
 </div>
 
@@ -868,7 +955,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8AWeb%E6%BC%8F%E6%B4%9E%E6%90%9C%E7%B4%A2%E3%80%8B"><span class="toc-text">《Web漏洞搜索》</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E5%BC%8F%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">开放式重定向</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HPP%EF%BC%88http%E5%8F%82%E6%95%B0%E6%B1%A1%E6%9F%93%EF%BC%89"><span class="toc-text">HPP（http参数污染）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSRF%EF%BC%88%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0%EF%BC%89"><span class="toc-text">CSRF（跨站请求伪造）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CRLF%E6%B3%A8%E5%85%A5%EF%BC%88%E5%9B%9E%E8%BD%A6%E6%8D%A2%E8%A1%8C%E6%B3%A8%E5%85%A5%EF%BC%89"><span class="toc-text">CRLF注入（回车换行注入）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E6%8A%95%E6%AF%92"><span class="toc-text">缓存投毒</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XXS"><span class="toc-text">XXS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5"><span class="toc-text">SSTI模板注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XXE-%E5%A4%96%E9%83%A8%E5%AE%9E%E4%BD%93%E6%B3%A8%E5%85%A5"><span class="toc-text">XXE(外部实体注入)</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="toc-text">生成数据表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E8%A1%A8%E4%BF%A1%E6%81%AF"><span class="toc-text">查看数据表信息</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%BB%B4%E5%BA%A6"><span class="toc-text">查看维度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF-%E7%BB%B4%E5%BA%A6%EF%BC%8C%E5%88%97%E5%90%8D%EF%BC%8C%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%EF%BC%8C%E6%89%80%E5%8D%A0%E7%A9%BA%E9%97%B4%E7%AD%89"><span class="toc-text">数据表基本信息(维度，列名，数据格式，所占空间等)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%A1%8C%E7%B4%A2%E5%BC%95%E5%90%8D%EF%BC%88%E7%AC%AC%E4%B8%80%E5%88%97%EF%BC%89"><span class="toc-text">查看行索引名（第一列）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%97%E7%B4%A2%E5%BC%95%E5%90%8D%EF%BC%88%E7%AC%AC%E4%B8%80%E8%A1%8C%EF%BC%89"><span class="toc-text">查看列索引名（第一行）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E8%A1%A8%E6%A0%BC%E4%B8%AD%E7%9A%84%E6%8C%87%E5%AE%9A%E5%85%83%E7%B4%A0"><span class="toc-text">定位表格中的指定元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">数据的类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%80%E5%88%97%E7%9A%84%E5%80%BC"><span class="toc-text">查看某一列的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%80%E8%A1%8C%E7%9A%84%E5%80%BC"><span class="toc-text">查看某一行的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%98%AF%E5%90%A6%E7%A9%BA%E5%80%BC"><span class="toc-text">查看是否空值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%80%E5%88%97%E7%9A%84%E5%94%AF%E4%B8%80%E5%80%BC"><span class="toc-text">查看某一列的唯一值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E5%80%BC"><span class="toc-text">查看数据表的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%89%8Dn%E8%A1%8C-%E5%90%8En%E8%A1%8C%E7%9A%84%E5%80%BC"><span class="toc-text">查看前n行&#x2F;后n行的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BB%A1%E8%B6%B3%E7%89%B9%E5%AE%9A%E6%96%87%E4%BB%B6%E7%9A%84%E8%A1%8C"><span class="toc-text">满足特定文件的行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E6%96%87%E4%BB%B6"><span class="toc-text">导出文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%B8%85%E6%B4%97"><span class="toc-text">数据表清洗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%BB%E9%99%A4%E7%A9%BA%E5%80%BC"><span class="toc-text">去除空值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E7%A9%BA%E5%80%BC"><span class="toc-text">清除空值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E7%A9%BA%E5%80%BC%E4%BD%BF%E7%94%A80%E4%BB%A3%E6%9B%BF"><span class="toc-text">将空值使用0代替</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E6%8E%A7%E5%88%B6%E4%BD%BF%E7%94%A8%E5%9D%87%E5%80%BC%E4%BB%A3%E6%9B%BF"><span class="toc-text">将控制使用均值代替</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2"><span class="toc-text">大小写转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-text">更改数据格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E5%88%97%E5%90%8D"><span class="toc-text">更改列名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D%E7%9A%84%E5%80%BC"><span class="toc-text">删除重复的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E6%95%B0%E6%8D%AE"><span class="toc-text">替换数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-text">数据预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6"><span class="toc-text">合并</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#merge"><span class="toc-text">merge</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#inner-%E4%BA%A4%E9%9B%86"><span class="toc-text">inner 交集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#left-right-%E5%B7%A6%E8%BF%9E%E6%8E%A5-%E5%8F%B3%E8%BF%9E%E6%8E%A5"><span class="toc-text">left&#x2F;right 左连接&#x2F;右连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#outer-%E4%BA%A4%E9%9B%86"><span class="toc-text">outer 交集</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#concat"><span class="toc-text">concat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#join"><span class="toc-text">join</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%B4%A2%E5%BC%95%E5%88%97"><span class="toc-text">设置索引列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E7%89%B9%E5%AE%9A%E5%88%97%E7%9A%84%E5%80%BC%E6%8E%92%E5%BA%8F%EF%BC%9A"><span class="toc-text">按照特定列的值排序：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E7%B4%A2%E5%BC%95%E5%88%97%E6%8E%92%E5%BA%8F%EF%BC%9A"><span class="toc-text">按照索引列排序：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E6%9E%9Cprince%E5%88%97%E7%9A%84%E5%80%BC-3000%EF%BC%8Cgroup%E5%88%97%E6%98%BE%E7%A4%BAhigh%EF%BC%8C%E5%90%A6%E5%88%99%E6%98%BE%E7%A4%BAlow%EF%BC%9A"><span class="toc-text">如果prince列的值&gt;3000，group列显示high，否则显示low：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%A4%8D%E5%90%88%E5%A4%9A%E4%B8%AA%E6%9D%A1%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84%E6%A0%87%E8%AE%B0"><span class="toc-text">对复合多个条件的数据进行分组标记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9category%E5%AD%97%E6%AE%B5%E7%9A%84%E5%80%BC%E4%BE%9D%E6%AC%A1%E8%BF%9B%E8%A1%8C%E5%88%86%E5%88%97%EF%BC%8C%E5%B9%B6%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8%EF%BC%8C%E7%B4%A2%E5%BC%95%E5%80%BC%E4%B8%BAdf-inner%E7%9A%84%E7%B4%A2%E5%BC%95%E5%88%97%EF%BC%8C%E5%88%97%E5%90%8D%E7%A7%B0%E4%B8%BAcategory%E5%92%8Csize"><span class="toc-text">对category字段的值依次进行分列，并创建数据表，索引值为df_inner的索引列，列名称为category和size</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E5%AE%8C%E6%88%90%E5%88%86%E8%A3%82%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE%E8%A1%A8%E5%92%8C%E5%8E%9Fdf-inner%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BF%9B%E8%A1%8C%E5%8C%B9%E9%85%8D"><span class="toc-text">将完成分裂后的数据表和原df_inner数据表进行匹配</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>

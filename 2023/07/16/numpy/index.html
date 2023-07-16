@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>《Web漏洞搜索》阅读笔记 | PIP的空间</title>
+  <title>numpy笔记 | PIP的空间</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -464,21 +464,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://pic3.zhimg.com/80/v2-5f7cb7e900b9dcf5354c3d4d2c5cc3c2_1440w.webp')">
+  background-position: center center;position: relative;background-image:url('https://picx.zhimg.com/80/v2-9c50d3af0bc62a0e8b6e89e24c769317_1440w.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        《Web漏洞搜索》阅读笔记
+        numpy笔记
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2022-12-23 |
+          <i class="fas fa-calendar"></i> Published in：2023-07-16 |
         </span>
       
 
@@ -486,8 +486,8 @@
         <span class="post-detail-header_categories">
           <i class="iconfont iconbookmark1"></i> category：
           
-            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="post-detail-header_category">
-              网络安全
+            <a href="/categories/Ai/" class="post-detail-header_category">
+              Ai
             </a>
           
         </span>
@@ -511,95 +511,115 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="《Web漏洞搜索》"><a href="#《Web漏洞搜索》" class="headerlink" title="《Web漏洞搜索》"></a>《Web漏洞搜索》</h1><p>备注: 讲了一下跟挖漏洞相关的建议，还有一些实例<br>开始日期: December 23, 2022 5:09 PM<br>状态: 已完成</p>
-<h1 id="开放式重定向"><a href="#开放式重定向" class="headerlink" title="开放式重定向"></a>开放式重定向</h1><aside>
-💡 重定向的实现一般是通过url参数，HTML<meta>刷新标签，DOM中的window对象的location属性实现的。
+        <p>numpy数组跟python原生的数组不同<br>优势：因为底层是使用C语言直接实现，所以效率更快（但编写是python）<br>学习文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/a373595475/article/details/79580734">https://blog.csdn.net/a373595475/article/details/79580734</a></p>
+<h2 id="基本概念："><a href="#基本概念：" class="headerlink" title="基本概念："></a>基本概念：</h2><p> NumPy数组的维度：指的是数组的轴数或数组的秩（rank）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] 一维</span><br><span class="line"></span><br><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]] 二维</span><br><span class="line"></span><br><span class="line">[</span><br><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]],</span><br><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]]</span><br><span class="line">]		三维</span><br></pre></td></tr></table></figure>
 
-</aside>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy as <span class="type">np</span></span><br><span class="line"></span><br><span class="line"><span class="variable">a</span> <span class="operator">=</span> np.array([[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">              [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]],</span><br><span class="line">              [[<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">              [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]]]</span><br><span class="line">            )</span><br><span class="line">print(a.shape)</span><br><span class="line">print(<span class="string">&quot;一维&quot;</span>)</span><br><span class="line">print(a[<span class="number">0</span>])</span><br><span class="line">print(a[<span class="number">1</span>])</span><br><span class="line">print(<span class="string">&quot;二维&quot;</span>)</span><br><span class="line">print(a[:,<span class="number">0</span>])</span><br><span class="line">print(a[:,<span class="number">1</span>])</span><br><span class="line">print(<span class="string">&quot;三维&quot;</span>)</span><br><span class="line">print(a[:,:,<span class="number">0</span>])</span><br><span class="line">print(a[:,:,<span class="number">1</span>])</span><br><span class="line">print(a[:,:,<span class="number">2</span>])</span><br><span class="line"></span><br><span class="line">D:\development\python\python.exe D:/AI/pydemo/numpy_demo.py </span><br><span class="line">(<span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">一维</span><br><span class="line">[[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</span><br><span class="line"> [<span class="number">4</span> <span class="number">5</span> <span class="number">6</span>]]</span><br><span class="line">[[ <span class="number">7</span>  <span class="number">8</span>  <span class="number">9</span>]</span><br><span class="line"> [<span class="number">10</span> <span class="number">11</span> <span class="number">12</span>]]</span><br><span class="line">二维</span><br><span class="line">[[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</span><br><span class="line"> [<span class="number">7</span> <span class="number">8</span> <span class="number">9</span>]]</span><br><span class="line">[[ <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>]</span><br><span class="line"> [<span class="number">10</span> <span class="number">11</span> <span class="number">12</span>]]</span><br><span class="line">三维</span><br><span class="line">[[ <span class="number">1</span>  <span class="number">4</span>]</span><br><span class="line"> [ <span class="number">7</span> <span class="number">10</span>]]</span><br><span class="line">[[ <span class="number">2</span>  <span class="number">5</span>]</span><br><span class="line"> [ <span class="number">8</span> <span class="number">11</span>]]</span><br><span class="line">[[ <span class="number">3</span>  <span class="number">6</span>]</span><br><span class="line"> [ <span class="number">9</span> <span class="number">12</span>]]</span><br><span class="line"></span><br><span class="line">进程已结束,退出代码<span class="number">0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>简述：通过改变GET请求中包含可以控制的重定向网址，将网站重定向到我们想要的地方。</p>
-<p>挖掘思路：</p>
-<p>重点关注特定名称的url参数，如：url&#x3D;,redirect&#x3D;,next&#x3D;,r&#x3D;,u&#x3D;</p>
-<p>有时候网站会对重定向的链接做一些验证，可能是只能重定向到本网站，此时就需要结合其他漏洞进行利用，比如重定向到一个可以自由编辑js代码的界面，这时候再进行一个重定向，就可以达到我们预期的结果。</p>
-<p>有时候我们可以控制重定向网址的一部分，比如结尾，我们可以在结尾构造重定向链接，因为DNS是按照域名标记右侧优先的原则进行查询</p>
-<h1 id="HPP（http参数污染）"><a href="#HPP（http参数污染）" class="headerlink" title="HPP（http参数污染）"></a>HPP（http参数污染）</h1><p>简述：我们的请求过程中，对http注入额外的参数，这些额外参数干扰了后端代码对正常参数的处理，从而导致了非预期的结果。</p>
-<aside>
-💡 服务器端HPPP与客户端HPP的区别：对http进行参数污染之后是否在有中间的反馈。服务器端HPP只能看到后端代码运行之后的结果，而看不到中间的过程。（不用太纠结区别）
 
-</aside>
+<h2 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h2><h3 id="通过列表创建数组"><a href="#通过列表创建数组" class="headerlink" title="通过列表创建数组"></a>通过列表创建数组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]])</span><br><span class="line"></span><br><span class="line">[[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</span><br><span class="line"> [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</span><br><span class="line"> [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">np.array([[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]],</span><br><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]]])</span><br><span class="line"></span><br><span class="line">[[[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</span><br><span class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]]</span><br><span class="line"></span><br><span class="line"> [[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</span><br><span class="line">  [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]]]</span><br></pre></td></tr></table></figure>
 
-<p>挖掘思路：</p>
-<ul>
-<li>寻找与其他服务相关联的链接，因为这些链接在跳转的时候可能会传递一些可控的参数，我们通过&amp;xxx&#x3D;xxx添加新的参数（有时候需要对&amp;进行url编码为%26，改值被html编码后为&amp;amp；）。</li>
-<li>在挖掘逻辑漏洞时可以试一下参数污染，添加相同参数绕过</li>
-</ul>
-<h1 id="CSRF（跨站请求伪造）"><a href="#CSRF（跨站请求伪造）" class="headerlink" title="CSRF（跨站请求伪造）"></a>CSRF（跨站请求伪造）</h1><p>简述：用户在一个网站上登录自己的账号，我们通过其他网站A去重定向到这个网站B，并以用户的身份发送请求。</p>
-<p>挖掘思路：</p>
-<ul>
-<li>GET请求→直接在url注入要发送的参数</li>
-<li>POST请求→后台可能用的request接受参数，同样在url注入参数。如果是后台是POST请求接受参数，那我们可以网站A去构造一个表单，如：</li>
-</ul>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">　　<span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　　　<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">　　　　　　<span class="keyword">function</span> <span class="title function_">steal</span>(<span class="params"></span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">　　　　　　&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          　　　　 iframe = <span class="variable language_">document</span>.<span class="property">frames</span>[<span class="string">&quot;steal&quot;</span>];</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">　　     　　      iframe.<span class="property">document</span>.<span class="title class_">Submit</span>(<span class="string">&quot;transfer&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">　　　　　　&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">　　　　</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">　　<span class="language-xml"><span class="tag">&lt;<span class="name">body</span> <span class="attr">οnlοad</span>=<span class="string">&quot;steal()&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　　　<span class="tag">&lt;<span class="name">iframe</span> <span class="attr">name</span>=<span class="string">&quot;steal&quot;</span> <span class="attr">display</span>=<span class="string">&quot;none&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　　　　　<span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span> <span class="attr">name</span>=<span class="string">&quot;transfer&quot;</span>　<span class="attr">action</span>=<span class="string">&quot;http://www.myBank.com/Transfer.php&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　　　　　　　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;toBankId&quot;</span> <span class="attr">value</span>=<span class="string">&quot;11&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　　　　　　　<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;money&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1000&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　　　　　<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　　　<span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">　　<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<p>向网站B发送请求，这里的type&#x3D;”hidden”可以隐藏标签，display&#x3D;”none”可以隐藏响应内容</p>
-<ul>
-<li>应该重点关注在服务器端执行操作的HTTP请求.有时候一些API接口也会存在CSRF。</li>
-<li>如果网站正在使用POST请求发送CSRF令牌，我们可以尝试修改或将其删除，以验证令牌是否存在</li>
-</ul>
-<p>常见防御手段：</p>
-<ul>
-<li>网站要求以内容类型（content-type）为application&#x2F;json，带着一个CSRF token进行提交，用来验证请求的发起者。当浏览器发送application&#x2F;json请求时，会发送一个OPTIONS HTTP请求，这个请求会返回支持的HTTP请求类型和信任的源。有些情况下，我们可以通过修改content-type绕过这些措施。</li>
-<li>扩源资源共享（CORS）定义了网站什么时候和如何互相读取响应信息。有些情况下，我们可以将content-type修改为application&#x2F;x-www-form-urlencoded，multipart&#x2F;form-data或text。plain来绕过，这样就不会发起OPTIONS HTTP请求。</li>
-<li>将token写在某一个http中（GET，POST都有可能）。</li>
-</ul>
-<h1 id="CRLF注入（回车换行注入）"><a href="#CRLF注入（回车换行注入）" class="headerlink" title="CRLF注入（回车换行注入）"></a>CRLF注入（回车换行注入）</h1><p>简述：服务器和浏览器都是通过CRLF字符来识别HTTP消息中的不同部分的,我们可以在http头中加入回车换行符 \n\r，其编码形式为%0d%0a，从而修改http头的消息。进一步可以造成HTTP夹带攻击，HTTP响应攻击和XSS攻击，会话固定，缓存投毒等。</p>
-<p>漏洞挖掘：</p>
-<ul>
-<li>注入点主要是重定向或者跳转的地方。要观察输出是否再返回头中，查看输入，可能是在URL值和参数，cookie中。</li>
-<li>常见的两种情况是使用输入参数set-cookie和302跳转location处。CRLF之后，我们可以加入新的参数，或进行XSS注入。比如某一个链接：xxx.com?url&#x3D;<a target="_blank" rel="noopener" href="http://www.baidu.com,然后这个www.baidu.com又出现在页面当中,此时我们可以将这个重定向漏洞进行进一步的升级,改为xxx.com/?url=%0D%0A">www.baidu.com，然后这个www.baidu.com又出现在页面当中，此时我们可以将这个重定向漏洞进行进一步的升级，改为xxx.com?url=%0d%0a</a><xss payload>，从而注入xss。</li>
-</ul>
-<p>常见防御手段：</p>
-<ul>
-<li>过滤CRLF字符</li>
-</ul>
-<h1 id="缓存投毒"><a href="#缓存投毒" class="headerlink" title="缓存投毒"></a>缓存投毒</h1><p>简述：服务器为了节省资源，当多个用户请求同一资源时，服务端会返回预先存好的资源。我们可以通过修改这个缓存造成缓存投毒</p>
-<h1 id="XXS"><a href="#XXS" class="headerlink" title="XXS"></a>XXS</h1><p>漏洞挖掘：</p>
-<ul>
-<li>有时候注入一个xss并不会马上发生反馈，比如在用户名注入xss payload，但在个人主页上并没有反馈，但在邮箱功能却能够实现。所以要关注多个地方，看xss是否在某个不显著的地方实现了。</li>
-<li>有时候xss会被js代码过滤，编码，我们可以通过重写此js代码绕过</li>
-<li>有些网站使用修改xss（移除字符，属性等）进行输入过滤，我们可以通过分析它的机制，利用这个修改机制绕过</li>
-<li>网站可能只对输入进行过滤，而页面呈现没有过滤。（利用条件较苛刻）</li>
-<li>多关注能反馈到页面的输入</li>
-</ul>
-<h1 id="SSTI模板注入"><a href="#SSTI模板注入" class="headerlink" title="SSTI模板注入"></a>SSTI模板注入</h1><p>漏洞挖掘：常用49，&lt;%&#x3D;xxx%&gt;进行测试</p>
-<ul>
-<li>在寻找漏洞前，最好对网站进行信息收集，确认一下使用的相关技术（比如网站的框架，前端呈现的引擎，CMS等）</li>
-</ul>
-<h1 id="XXE-外部实体注入"><a href="#XXE-外部实体注入" class="headerlink" title="XXE(外部实体注入)"></a>XXE(外部实体注入)</h1><p>简述：</p>
-<p>XML 和 HTML 为不同的目的而设计：</p>
-<ul>
-<li>XML 被设计用来传输和存储数据，其焦点是数据的内容。</li>
-<li>HTML 被设计用来显示数据，其焦点是数据的外观</li>
-</ul>
-<p>基本组成：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;ISO-8859-1&quot;</span><span class="meta">?&gt;</span> <span class="comment">#声明头</span></span><br><span class="line">&lt;note&gt; <span class="comment">#内容，标签名是可以自定义的</span></span><br><span class="line">&lt;to&gt;Tove&lt;/to&gt;</span><br><span class="line">&lt;<span class="keyword">from</span>&gt;Jani&lt;/<span class="keyword">from</span>&gt;</span><br><span class="line">&lt;heading&gt;Reminder&lt;/heading&gt;</span><br><span class="line">&lt;body fun=<span class="string">&quot;1&quot;</span>&gt;Don<span class="string">&#x27;t forget me this weekend!&lt;/body&gt; #带了一个fun属性</span></span><br><span class="line"><span class="string">&lt;website&gt;&amp;url;&lt;/website&gt;</span></span><br><span class="line"><span class="string">&lt;/note&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>XML实体：相当于定义一个变量，避免多次调用时重复编写。实体名为以&amp;开头，以;结尾。如果实体需要被计算，那么将&amp;替换为%，即为%xxx;</p>
-<p>DTD :定义文档结构，支持外部DTD和内部DTD：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>xml version=<span class="string">&quot;1.0&quot;</span><span class="meta">?&gt;</span></span><br><span class="line">&lt;!DOCTYPE note [ </span><br><span class="line">&lt;!ELEMENT <span class="title function_ invoke__">note</span> (to,<span class="keyword">from</span>,heading,body)&gt;</span><br><span class="line">&lt;!ELEMENT <span class="title function_ invoke__">to</span> (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT <span class="keyword">from</span> (<span class="comment">#PCDATA)&gt;</span></span><br><span class="line">&lt;!ELEMENT <span class="title function_ invoke__">heading</span> (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT <span class="title function_ invoke__">body</span> (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT url SYSTEM <span class="string">&quot;website.txt&quot;</span>&gt;</span><br><span class="line">]&gt;</span><br><span class="line">...此处为上一个代码块的代码</span><br><span class="line"><span class="comment">###</span></span><br><span class="line">&lt;!DOCTYPE note []&gt;定义此文档是 note 类型的文档。</span><br><span class="line">&lt;!ELEMENT note&gt;定义 note 元素有四个元素：<span class="string">&quot;to、from、heading,、body&quot;</span></span><br><span class="line">&lt;!ELEMENT to&gt; 定义 to 元素为 <span class="string">&quot;#PCDATA&quot;</span> 类型（下面的同理）</span><br><span class="line">ps：</span><br><span class="line"><span class="comment">#PCDATA 表示可进行HTML解析的字符数据，不过，被解析的字符数据不应当包含任何 &amp;、&lt; 或者 &gt; 字符；需要使用 &amp;amp;、&amp;lt; 以及 &amp;gt; 实体来分别替换它们。</span></span><br><span class="line"><span class="comment">#CDdata 表示不会被解析器解析的文本</span></span><br><span class="line">ANY 定义标签包含任何可解析的数据</span><br><span class="line"></span><br><span class="line">&lt;!ELEMENT url SYSTEM <span class="string">&quot;website.txt&quot;</span>&gt; 使用SYSTEM属性告诉解析器使用url占位符获取website.txt文件的内容</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>漏洞挖掘：</p>
-<ul>
-<li>注意具有xml，可以上传xml的地方</li>
-</ul>
+<h3 id="创建全为0的三维数组"><a href="#创建全为0的三维数组" class="headerlink" title="创建全为0的三维数组"></a>创建全为0的三维数组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.zeros((<span class="number">3</span>,<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[0. 0. 0. 0.]<br> [0. 0. 0. 0.]<br> [0. 0. 0. 0.]]</p>
+</blockquote>
+<h3 id="创建全为1的三维数组"><a href="#创建全为1的三维数组" class="headerlink" title="创建全为1的三维数组"></a>创建全为1的三维数组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.ones((<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[[1. 1. 1. 1.]<br>  [1. 1. 1. 1.]<br>  [1. 1. 1. 1.]]</p>
+<p> [[1. 1. 1. 1.]<br>  [1. 1. 1. 1.]<br>  [1. 1. 1. 1.]]]</p>
+</blockquote>
+<h3 id="创建任意大小的数组并填充指定数字"><a href="#创建任意大小的数组并填充指定数字" class="headerlink" title="创建任意大小的数组并填充指定数字"></a>创建任意大小的数组并填充指定数字</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.full((<span class="number">2</span>, <span class="number">5</span>), <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[2 2 2 2 2]<br> [2 2 2 2 2]]</p>
+</blockquote>
+<h3 id="arange创建一维等差数组"><a href="#arange创建一维等差数组" class="headerlink" title="arange创建一维等差数组"></a>arange创建一维等差数组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.arange(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[0 1 2 3 4]</p>
+</blockquote>
+<h3 id="创建多维等差数组"><a href="#创建多维等差数组" class="headerlink" title="创建多维等差数组"></a>创建多维等差数组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.arange(<span class="number">6</span>).reshape(<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[0 1 2]<br> [3 4 5]]</p>
+</blockquote>
+<p>使用<code>arange</code>创建了一维等差数组，然后先reshape将数组重塑为形状(2,3)</p>
+<h3 id="创建单位矩阵"><a href="#创建单位矩阵" class="headerlink" title="创建单位矩阵"></a>创建单位矩阵</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.eye(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[1. 0. 0.]<br> [0. 1. 0.]<br> [0. 0. 1.]]</p>
+</blockquote>
+<h3 id="创建二维随机数组"><a href="#创建二维随机数组" class="headerlink" title="创建二维随机数组"></a>创建二维随机数组</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.random.rand(<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[0.09281844 0.90069456 0.02561579]<br> [0.75375864 0.12419854 0.76366864]]</p>
+</blockquote>
+<h3 id="创建二维随机整数数组（数值小于5）"><a href="#创建二维随机整数数组（数值小于5）" class="headerlink" title="创建二维随机整数数组（数值小于5）"></a>创建二维随机整数数组（数值小于5）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.random.randint(<span class="number">5</span>,size=(<span class="number">2</span>,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[0 1 1]<br> [4 3 0]]</p>
+</blockquote>
+<h2 id="数组运算"><a href="#数组运算" class="headerlink" title="数组运算"></a>数组运算</h2><h3 id="num-数组内-加"><a href="#num-数组内-加" class="headerlink" title="num 数组内 加"></a>num 数组内 加</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]])</span><br><span class="line">print(np.sum(a))    # 对数组内所有元素求和</span><br><span class="line">print(np.sum(a, axis=<span class="number">0</span>))  # axis=<span class="number">0</span> 表示对每一列求和</span><br><span class="line">print(np.sum(a, axis=<span class="number">1</span>))  # axis=<span class="number">0</span> 表示对每一行求和</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>30<br>[ 2  4  6  8 10]<br>[15 15]</p>
+</blockquote>
+<h3 id="mean-求平均值"><a href="#mean-求平均值" class="headerlink" title="mean 求平均值"></a>mean 求平均值</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line">print(np.mean(a))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.0</p>
+</blockquote>
+<h3 id="tile-复制"><a href="#tile-复制" class="headerlink" title="tile 复制"></a>tile 复制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line">print(np.tile(a,(<span class="number">1</span>,<span class="number">2</span>)))		#表示复制为一行两列（右边再复制一列）</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[1 2 3 4 5 1 2 3 4 5]]</p>
+</blockquote>
+<h3 id="argsort-返回大小排序后的下标"><a href="#argsort-返回大小排序后的下标" class="headerlink" title="argsort 返回大小排序后的下标"></a>argsort 返回大小排序后的下标</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">numpy.argsort(a, axis=-<span class="number">1</span>, kind=<span class="string">&#x27;quicksort&#x27;</span>, order=<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">a：要排序的数组。</span><br><span class="line">axis：指定沿着哪个轴进行排序，默认为最后一个轴。</span><br><span class="line">kind：指定排序算法，可选值为<span class="string">&#x27;quicksort&#x27;</span>、<span class="string">&#x27;mergesort&#x27;</span>和<span class="string">&#x27;heapsort&#x27;</span>。默认为<span class="string">&#x27;quicksort&#x27;</span>。</span><br><span class="line">    order：当a为结构化数据类型时，通过该参数指定排序依据的字段。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">8</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>]])</span><br><span class="line"><span class="built_in">print</span>(a.argsort())  <span class="comment"># 将元素按照行从小到大排序，返回对应位置元素的下标</span></span><br><span class="line"><span class="built_in">print</span>(a.argsort(axis=<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[2 1 0 3 4]<br> [2 1 3 4 0]]<br>[[0 0 0 0 0]<br> [1 1 1 1 1]]</p>
+</blockquote>
+<p>tip：这个下标是排列前的下标，以第二行为例子，可以对应着去看2-&gt;1,1-&gt;2,3-&gt;4,4-&gt;5,0-&gt;8（下标-&gt;数字）</p>
+<h3 id="一维数组加减乘除"><a href="#一维数组加减乘除" class="headerlink" title="一维数组加减乘除"></a>一维数组加减乘除</h3><p>tip：数组的加减乘除就是相对应位置上的元素加减乘除</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]])</span><br><span class="line">b = np.full((<span class="number">2</span>, <span class="number">5</span>), <span class="number">2</span>)</span><br><span class="line">b[<span class="number">1</span>,<span class="number">4</span>]=<span class="number">4</span>    <span class="comment"># 将第二行的第五个元素换为4</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"><span class="built_in">print</span>(a + b)</span><br><span class="line"><span class="built_in">print</span>(a - b)</span><br><span class="line"><span class="built_in">print</span>(a * b)</span><br><span class="line"><span class="built_in">print</span>(a / b)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[1 2 3 4 5]<br> [1 2 3 4 5]]<br>[[2 2 2 2 2]<br> [2 2 2 2 4]]<br>[[3 4 5 6 7]<br> [3 4 5 6 9]]<br>[[-1  0  1  2  3]<br> [-1  0  1  2  1]]<br>[[ 2  4  6  8 10]<br> [ 2  4  6  8 20]]<br>[[0.5  1.   1.5  2.   2.5 ]<br> [0.5  1.   1.5  2.   1.25]]</p>
+</blockquote>
+<h2 id="矩阵运算"><a href="#矩阵运算" class="headerlink" title="矩阵运算"></a>矩阵运算</h2><h3 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h3><h4 id="np-dot-A-B-是用于计算两个数组的矩阵乘法的函数。"><a href="#np-dot-A-B-是用于计算两个数组的矩阵乘法的函数。" class="headerlink" title="np.dot(A, B) 是用于计算两个数组的矩阵乘法的函数。"></a>np.dot(A, B) 是用于计算两个数组的矩阵乘法的函数。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A = np.array([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line">B = np.array([[<span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>]])</span><br><span class="line"><span class="built_in">print</span>(np.dot(A, B))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[19 22]<br> [43 50]]</p>
+</blockquote>
+<h4 id="如果使用-np-mat-将二维数组准确定义为矩阵，就可以直接使用-完成矩阵乘法计算："><a href="#如果使用-np-mat-将二维数组准确定义为矩阵，就可以直接使用-完成矩阵乘法计算：" class="headerlink" title="如果使用 np.mat 将二维数组准确定义为矩阵，就可以直接使用 * 完成矩阵乘法计算："></a>如果使用 np.mat 将二维数组准确定义为矩阵，就可以直接使用 * 完成矩阵乘法计算：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A = np.mat([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line">B = np.mat([[<span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>]])</span><br><span class="line"><span class="built_in">print</span>(A*B)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[19 22]<br> [43 50]]</p>
+</blockquote>
+<h3 id="转置矩阵"><a href="#转置矩阵" class="headerlink" title="转置矩阵"></a>转置矩阵</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A = np.mat([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line"><span class="built_in">print</span>(A)</span><br><span class="line"><span class="built_in">print</span>(A.T)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[1 2]<br> [3 4]]<br>[[1 3]<br> [2 4]]</p>
+</blockquote>
+<h3 id="矩阵求逆"><a href="#矩阵求逆" class="headerlink" title="矩阵求逆"></a>矩阵求逆</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A = np.mat([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line"><span class="built_in">print</span>(np.linalg.inv(A))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[-2.   1. ]<br> [ 1.5 -0.5]]</p>
+</blockquote>
+<h2 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h2><p>介绍： 广播（broadcasting）是一种强大且灵活的机制，NumPy会自动调整数组的形状，以使其符合运算的要求。  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[1, 2, 3],</span><br><span class="line">              [4, 5, 6],</span><br><span class="line">              [7, 8, 9]])</span><br><span class="line">b = np.array([1, 2, 3])</span><br><span class="line">print(a+b)  # 广播会自动调整数组的形状</span><br><span class="line">b = np.tile(b, (3, 1))  # 复制三行</span><br><span class="line">print(b)</span><br><span class="line">print(a+b)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[[ 2  4  6]<br> [ 5  7  9]<br> [ 8 10 12]]<br>[[1 2 3]<br> [1 2 3]<br> [1 2 3]]<br>[[ 2  4  6]<br> [ 5  7  9]<br> [ 8 10 12]]</p>
+</blockquote>
+<h2 id="索引的使用"><a href="#索引的使用" class="headerlink" title="索引的使用"></a>索引的使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">              [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">              [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]])</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">0</span>, <span class="number">0</span>])  <span class="comment"># 取出某个确定的值</span></span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">0</span>:<span class="number">2</span>, <span class="number">0</span>:<span class="number">2</span>])  <span class="comment"># 取出某个范围</span></span><br><span class="line"><span class="built_in">print</span>(a[np.arange(<span class="number">3</span>), <span class="number">1</span>] + <span class="number">10</span>)  <span class="comment"># 给数组行索引为0，1，2的第一个元素都加上10</span></span><br><span class="line"><span class="built_in">print</span>(a[a &gt; <span class="number">6</span>])     <span class="comment"># 取出大于6的元素</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>1<br>[[1 2]<br> [4 5]]<br>[12 15 18]<br>[7 8 9]</p>
+</blockquote>
+<h2 id="类型与类型转换"><a href="#类型与类型转换" class="headerlink" title="类型与类型转换"></a>类型与类型转换</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([<span class="number">1.2</span>, <span class="number">2.1</span>],dtype=np.float64)</span><br><span class="line"><span class="built_in">print</span>(a.dtype)</span><br><span class="line"><span class="built_in">print</span>(a.astype(np.int64))  <span class="comment"># 将类型转换为int64</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>float64<br>[1 2]</p>
+</blockquote>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="">
-              读书笔记
+            <a href="/tags/Ai/" class="">
+              Ai
+            </a>
+          
+            <a href="/tags/Python/" class="">
+              Python
             </a>
           
         </div>
@@ -613,7 +633,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2022/12/23/web-lou-dong-sou-suo-676da3cd74cd454595e5beca08946d17/" target="_blank" title="《Web漏洞搜索》阅读笔记">http://example.com/2022/12/23/web-lou-dong-sou-suo-676da3cd74cd454595e5beca08946d17/</a>
+    <a href="/2023/07/16/numpy/" target="_blank" title="numpy笔记">http://example.com/2023/07/16/numpy/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -631,26 +651,24 @@
 
 
 
+
+
   
-  <div class="post-nav-prev post-nav-item">
+  <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-573ac3e25de03fad9c32add5a05e5cfc_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2022/12/23/dai-ma-shen-ji-27f31c56ad1f449fb4d542f939bec05b/" class="post-nav-link">
+    <a href="/2023/07/16/panda/" class="post-nav-link">
       <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">《代码审计》阅读笔记</div>
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">Pandas笔记</div>
       </div>
-      
       <!-- <div class="content">
-        《代码审计》备注: php代码审计开始日期: December 23, 2022 5:09 PM状态: 已完成
-审计思路
+        pandas介绍： Pandas 是一个强大的数据处理和分析库，提供了丰富的数据结构和数据操作函数，使得数据的清洗、转换
       </div> -->
     </a>
   </div>
-
-
 
 </div>
 
@@ -868,7 +886,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8AWeb%E6%BC%8F%E6%B4%9E%E6%90%9C%E7%B4%A2%E3%80%8B"><span class="toc-text">《Web漏洞搜索》</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E5%BC%8F%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">开放式重定向</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HPP%EF%BC%88http%E5%8F%82%E6%95%B0%E6%B1%A1%E6%9F%93%EF%BC%89"><span class="toc-text">HPP（http参数污染）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSRF%EF%BC%88%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0%EF%BC%89"><span class="toc-text">CSRF（跨站请求伪造）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CRLF%E6%B3%A8%E5%85%A5%EF%BC%88%E5%9B%9E%E8%BD%A6%E6%8D%A2%E8%A1%8C%E6%B3%A8%E5%85%A5%EF%BC%89"><span class="toc-text">CRLF注入（回车换行注入）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E6%8A%95%E6%AF%92"><span class="toc-text">缓存投毒</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XXS"><span class="toc-text">XXS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5"><span class="toc-text">SSTI模板注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XXE-%E5%A4%96%E9%83%A8%E5%AE%9E%E4%BD%93%E6%B3%A8%E5%85%A5"><span class="toc-text">XXE(外部实体注入)</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="toc-text">基本概念：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84"><span class="toc-text">创建数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%88%97%E8%A1%A8%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84"><span class="toc-text">通过列表创建数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%85%A8%E4%B8%BA0%E7%9A%84%E4%B8%89%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">创建全为0的三维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%85%A8%E4%B8%BA1%E7%9A%84%E4%B8%89%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-text">创建全为1的三维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%BB%E6%84%8F%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%95%B0%E7%BB%84%E5%B9%B6%E5%A1%AB%E5%85%85%E6%8C%87%E5%AE%9A%E6%95%B0%E5%AD%97"><span class="toc-text">创建任意大小的数组并填充指定数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#arange%E5%88%9B%E5%BB%BA%E4%B8%80%E7%BB%B4%E7%AD%89%E5%B7%AE%E6%95%B0%E7%BB%84"><span class="toc-text">arange创建一维等差数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%A4%9A%E7%BB%B4%E7%AD%89%E5%B7%AE%E6%95%B0%E7%BB%84"><span class="toc-text">创建多维等差数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%8D%95%E4%BD%8D%E7%9F%A9%E9%98%B5"><span class="toc-text">创建单位矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%BB%84"><span class="toc-text">创建二维随机数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E6%95%B4%E6%95%B0%E6%95%B0%E7%BB%84%EF%BC%88%E6%95%B0%E5%80%BC%E5%B0%8F%E4%BA%8E5%EF%BC%89"><span class="toc-text">创建二维随机整数数组（数值小于5）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%BF%90%E7%AE%97"><span class="toc-text">数组运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#num-%E6%95%B0%E7%BB%84%E5%86%85-%E5%8A%A0"><span class="toc-text">num 数组内 加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mean-%E6%B1%82%E5%B9%B3%E5%9D%87%E5%80%BC"><span class="toc-text">mean 求平均值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tile-%E5%A4%8D%E5%88%B6"><span class="toc-text">tile 复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#argsort-%E8%BF%94%E5%9B%9E%E5%A4%A7%E5%B0%8F%E6%8E%92%E5%BA%8F%E5%90%8E%E7%9A%84%E4%B8%8B%E6%A0%87"><span class="toc-text">argsort 返回大小排序后的下标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4"><span class="toc-text">一维数组加减乘除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97"><span class="toc-text">矩阵运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95"><span class="toc-text">矩阵乘法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#np-dot-A-B-%E6%98%AF%E7%94%A8%E4%BA%8E%E8%AE%A1%E7%AE%97%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E7%9A%84%E5%87%BD%E6%95%B0%E3%80%82"><span class="toc-text">np.dot(A, B) 是用于计算两个数组的矩阵乘法的函数。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E4%BD%BF%E7%94%A8-np-mat-%E5%B0%86%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%87%86%E7%A1%AE%E5%AE%9A%E4%B9%89%E4%B8%BA%E7%9F%A9%E9%98%B5%EF%BC%8C%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8-%E5%AE%8C%E6%88%90%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E8%AE%A1%E7%AE%97%EF%BC%9A"><span class="toc-text">如果使用 np.mat 将二维数组准确定义为矩阵，就可以直接使用 * 完成矩阵乘法计算：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E7%BD%AE%E7%9F%A9%E9%98%B5"><span class="toc-text">转置矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E6%B1%82%E9%80%86"><span class="toc-text">矩阵求逆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%BF%E6%92%AD"><span class="toc-text">广播</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">索引的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">类型与类型转换</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
